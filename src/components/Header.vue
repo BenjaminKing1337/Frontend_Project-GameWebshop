@@ -81,6 +81,7 @@ header {
 }
 .dropdownOpen {
   position: relative;
+  z-index: 999;
 }
 .dpCloseBtn {
   padding: 20px;
