@@ -24,8 +24,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./src/styles/variables.scss";
+
 .body{
-  background: linear-gradient(blue, black);
+  background: linear-gradient(map-get($Colorscheme, tertiary), map-get($Colorscheme, primary));
 }
 #center {
   display: flex;

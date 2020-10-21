@@ -31,7 +31,7 @@
               <v-icon class="icon" color="black">login</v-icon><br />Login
             </router-link>
             <div class="dpCloseBtn" tag="li" @click="drawer = !drawer">
-              <v-icon class="icon material-icons md-48" color="black">menu</v-icon>
+              <v-icon class="icon material-icons md-48" color="red">menu</v-icon>
             </div>
           </v-list>
         </p>
@@ -60,19 +60,19 @@ header {
 }
 .logo {
   min-width: 100px;
-  background: linear-gradient(red, black);
+  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
   border-radius: 0 0 70px 0;
 }
 .nav {
   height: 60px !important;
   width: 300px;
-  background: linear-gradient(red, black);
+  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
   border-radius: 0 0 70px 70px;
   list-style: none;
   text-align: center;
 }
 .theme--light.v-list {
-  background: linear-gradient(red, red, black);
+  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
   text-align: center;
   list-style: none;
   border-radius: 0 0 70px 70px;
@@ -92,20 +92,20 @@ header {
 }
 .checkout {
   min-width: 100px;
-  background: linear-gradient(red, black);
+  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
   border-radius: 0 0 0 70px;
 }
 .dpCloseBtn:hover {
-  background-color: black !important;
+  background-color:map-get($Colorscheme, primary) !important;
   .icon {
-    color: red !important;
+    color:map-get($Colorscheme, secondary) !important;
   }
 }
 li:hover {
   background-color: black;
-  color: red;
+  color:map-get($Colorscheme, secondary);
   .icon {
-    color: red !important;
+    color:map-get($Colorscheme, secondary) !important;
   }
 }
 </style>
