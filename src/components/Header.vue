@@ -1,37 +1,40 @@
 <template>
   <div>
-    <header>
+    <header v-if="!$route.meta.hide">
       <div class="logo" id="center">
-        <img src="../assets/logo.png" alt="logo" height="50px" />
+        <router-link to="/">
+          <img src="../assets/logo.png" alt="logo" height="50px" />
+        </router-link>
       </div>
 
       <div>
-        <v-menu open-on-hover top offset-y>
-          <template  v-slot:activator="{ on, attrs }">
-            <v-btn class="nav" color="black" dark v-bind="attrs" v-on="on">
-              <v-icon color="red">menu</v-icon>
-            </v-btn>
-          </template>
+        <v-btn @click="drawer = !drawer" class="nav" color="black">
+          <v-icon class="icon" color="black">menu</v-icon>
+        </v-btn>
 
+        <p class="dropdownOpen" v-show="drawer">
           <v-list>
             <router-link tag="li" to="/home">
-          <v-icon color="black">home</v-icon><br />Home
-        </router-link>
-        <router-link tag="li" to="/games">
-          <v-icon color="black">videogame_asset</v-icon><br />Games
-        </router-link>
-        <router-link tag="li" to="/about">
-          <v-icon color="black">info</v-icon><br />About
-        </router-link>
-        <router-link tag="li" to="/admin">
-          <v-icon color="black">lock</v-icon><br />Admin
-        </router-link>
-        <router-link tag="li" to="/login">
-          <v-icon color="black">login</v-icon><br />Login
-        </router-link>
+              <v-icon class="icon" color="black">home</v-icon><br />Home
+            </router-link>
+            <router-link tag="li" to="/games">
+              <v-icon class="icon" color="black">videogame_asset</v-icon
+              ><br />Games
+            </router-link>
+            <router-link tag="li" to="/about">
+              <v-icon class="icon" color="black">info</v-icon><br />About
+            </router-link>
+            <router-link tag="li" to="/admin">
+              <v-icon class="icon" color="black">lock</v-icon><br />Admin
+            </router-link>
+            <router-link tag="li" to="/login">
+              <v-icon class="icon" color="black">login</v-icon><br />Login
+            </router-link>
+            <div class="dpCloseBtn" tag="li" @click="drawer = !drawer">
+              <v-icon class="icon material-icons md-48" color="black">menu</v-icon>
+            </div>
           </v-list>
-        </v-menu>
-        
+        </p>
       </div>
 
       <div class="checkout" id="center">
@@ -42,7 +45,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    drawer: false,
+  }),
+};
 </script>
 
 <style lang="scss" scoped>
@@ -65,22 +72,40 @@ header {
   text-align: center;
 }
 .theme--light.v-list {
-  background-color: red;
-  
-}
-.v-menu__content {
+  background: linear-gradient(red, red, black);
   text-align: center;
   list-style: none;
+  border-radius: 0 0 70px 70px;
+  margin-top: -60px;
+  z-index: 2;
+}
+.dropdownOpen {
+  position: relative;
+}
+.dpCloseBtn {
+  padding: 20px;
+  height: 50px;
+  border: none !important;
+  background: none !important;
+  border-radius: 0 0 70px 70px;
+  font-size: 5px;
 }
 .checkout {
   min-width: 100px;
   background: linear-gradient(red, black);
   border-radius: 0 0 0 70px;
 }
-
-#center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.dpCloseBtn:hover {
+  background-color: black !important;
+  .icon {
+    color: red !important;
+  }
+}
+li:hover {
+  background-color: black;
+  color: red;
+  .icon {
+    color: red !important;
+  }
 }
 </style>

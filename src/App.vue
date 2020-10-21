@@ -23,8 +23,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .body{
   background: linear-gradient(blue, black);
+}
+#center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

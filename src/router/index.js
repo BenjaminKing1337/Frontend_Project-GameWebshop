@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Frontpage from '../views/Frontpage.vue'
 import Home from '../views/Home.vue'
 import Games from '../views/Games.vue'
 import About from '../views/About.vue'
@@ -11,6 +12,12 @@ import Login from '../components/admin/Login.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/',
+    name: 'Frontpage',
+    component: Frontpage,
+    meta: { hide: true },
+  },
   {
     path: '/home',
     name: 'Home',
