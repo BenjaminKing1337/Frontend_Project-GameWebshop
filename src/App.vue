@@ -29,9 +29,5 @@ export default {
 .body{
   background: linear-gradient(map-get($Colorscheme, tertiary), map-get($Colorscheme, primary));
 }
-#center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 </style>
