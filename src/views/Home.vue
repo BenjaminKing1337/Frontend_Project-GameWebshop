@@ -86,6 +86,7 @@ export default {
     margin: auto;
   }
   #card{
+    position: relative;
     transition: 0.5s;
     cursor: pointer;
     &:hover{
