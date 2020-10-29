@@ -79,27 +79,32 @@ export default {
     text-align: center;
   }
   .cards{
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
+     */
     width: 80%;
-    justify-content: center;
     margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
   }
   #card{
+    justify-self: center;
     position: relative;
+    text-align: center;
     transition: 0.5s;
     cursor: pointer;
     &:hover{
       filter: grayscale(0.8);
     }
   }
-  #card:nth-child(3){
-    break-after: always;
-  }
 
   @media only screen and (max-width: 900px){
     .slideshow{
       width: 90%;
+    }
+    .cards{
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 
