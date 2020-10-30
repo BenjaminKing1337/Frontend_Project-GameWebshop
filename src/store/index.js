@@ -31,6 +31,9 @@ const store = new Vuex.Store({
   mutations: {
     ADD_PRODUCT(state, payload){
       state.games.push(payload)
+    },
+    REMOVE_PRODUCT(state, game){
+      state.games.splice(game, 1)
     }
   },
   actions: {
@@ -47,6 +50,9 @@ const store = new Vuex.Store({
       }
       //reach out to firebase and store it
       commit('ADD_PRODUCT', game)
+    },
+    remove_product({commit},game){
+      commit('REMOVE_PRODUCT',game)
     }
   },
   getters: {

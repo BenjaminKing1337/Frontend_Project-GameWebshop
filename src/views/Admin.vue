@@ -2,7 +2,7 @@
     <div>
         <v-container style="background-color:white">
             <v-layout row>
-                <v-flex xs12 sm6 offset-sm3>
+                <v-flex xs8 sm6 offset-sm3 offset-xs4>
                     <h4>Create a new Product</h4>
                 </v-flex>
             </v-layout>
@@ -10,7 +10,7 @@
                 <v-flex xs12>
                     <form @submit.prevent="onAddProduct">
                         <v-layout row>
-                            <v-flex xs12 sm6 offset-sm3>
+                            <v-flex xs8 sm6 offset-sm3 offset-xs2>
                                 <v-text-field
                                     name="title"
                                     label="Title"
@@ -21,7 +21,7 @@
                             </v-flex>
                         </v-layout>
                         <v-layout row>
-                            <v-flex xs12 sm6 offset-sm3>
+                            <v-flex xs8 sm6 offset-sm3 offset-xs2>
                                 <v-text-field
                                     name="genre"
                                     label="Genre"
@@ -32,7 +32,7 @@
                             </v-flex>
                         </v-layout>
                         <v-layout row>
-                            <v-flex xs12 sm6 offset-sm3>
+                            <v-flex xs8 sm6 offset-sm3 offset-xs2>
                                 <v-text-field
                                     name="platform"
                                     label="Platform"
@@ -43,7 +43,7 @@
                             </v-flex>
                         </v-layout>
                         <v-layout row>
-                            <v-flex xs12 sm6 offset-sm3>
+                            <v-flex xs8 sm6 offset-sm3 offset-xs2>
                                 <v-text-field
                                     name="imageUrl"
                                     label="Image URL"
@@ -54,12 +54,12 @@
                             </v-flex>
                         </v-layout>
                         <v-layout row>
-                            <v-flex xs12 sm6 offset-sm3>
+                            <v-flex xs8 sm6 offset-sm3 offset-xs2>
                                 <img :src="imageUrl" height="150">
                             </v-flex>
                         </v-layout>
                         <v-layout row>
-                            <v-flex xs12 sm6 offset-sm3>
+                            <v-flex xs8 sm6 offset-sm3 offset-xs2>
                                 <v-text-field
                                     name="videoUrl"
                                     label="Video URL"
@@ -70,7 +70,7 @@
                             </v-flex>
                         </v-layout>
                         <v-layout row>
-                            <v-flex xs12 sm6 offset-sm3>
+                            <v-flex xs8 sm6 offset-sm3 offset-xs2>
                                 <v-text-field
                                     name="description"
                                     label="Description"
@@ -82,7 +82,7 @@
                             </v-flex>
                         </v-layout>
                         <v-layout row>
-                            <v-flex xs12 sm6 offset-sm3>
+                            <v-flex xs8 sm6 offset-sm3 offset-xs2>
                                 <v-text-field
                                     name="price"
                                     label="Price"
@@ -93,7 +93,7 @@
                             </v-flex>
                         </v-layout>
                         <v-layout row>
-                            <v-flex xs12 sm6 offset-sm3>
+                            <v-flex xs8 sm6 offset-sm3 offset-xs4>
                                 <v-btn 
                                     color="green" 
                                     :disabled="!formIsValid"
@@ -107,6 +107,25 @@
                 </v-flex>
             </v-layout>
         </v-container>
+        <v-flex xs10 sm6 offset-sm3 offset-xs1>
+            <v-simple-table class="my-6">
+                <tbody>
+                    <tr v-for="game in games" :key="game.index">
+                        <td>
+                            <span class="font-weight-bold">{{ game.title }}</span> <br>
+                            <span class="font-weight-light">{{ game.genre }}</span> <br>
+                            <span class="font-weight-light">{{ game.platform}}</span> <br>
+                            <span>{{ game.price }} DKK</span>
+                        </td>
+                        <td>
+                            <v-btn @click="remove_products(game.index)">
+                                <v-icon color="red">delete</v-icon>
+                            </v-btn>
+                        </td>
+                    </tr>
+                </tbody>
+            </v-simple-table>
+        </v-flex>
     </div>
 </template>
 
@@ -121,6 +140,7 @@
                 videoUrl:'',
                 description:'',
                 price:'',
+                search: '',
             }
         },
         computed:{
@@ -132,7 +152,10 @@
                     this.videoUrl !== '' &&
                     this.description !== '' &&
                     this.price !== ''
-            }
+            },
+            games(){
+                return this.$store.getters.games
+            },
         },
         methods:{
             onAddProduct(){
@@ -150,6 +173,9 @@
                 }
                 this.$store.dispatch('add_product', gameData)
                 this.$router.push('/games');
+            },
+            remove_products(game){
+                this.$store.dispatch('remove_product', game)
             }
         }
     }
