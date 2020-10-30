@@ -4,21 +4,23 @@
     <div class="games">
       <v-card
         max-width="288"
+        v-for="game in games" :key="game.id"
+        class="mr-5 ml-5"
       >
         <v-img
           class="white--text align-end"
           height="200px"
-          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+          :src="game.imageUrl"
         >
-          <v-card-title>Ghost of Tshushima</v-card-title>
+          <v-card-title style="background-color: #00000099;">{{game.title}}</v-card-title>
         </v-img>
         <v-card-subtitle class="pb-0">
-          <div>Action-Adventure</div>
-          <div class="font-weight-medium">PS4</div>
+          <div> {{game.genre}} </div>
+          <div class="font-weight-medium"> {{game.platform}} </div>
         </v-card-subtitle>
         <div class="wrap">
           <v-card-text class="font-weight-bold pt-4 text-h6" id="price">
-            <div>425,00 kr.</div>
+            <div> {{game.price}} kr.</div>
           </v-card-text>
           <div class="wrap-actions">
             <v-card-actions class="actions">
@@ -34,6 +36,7 @@
               <v-btn
                 color="orange"
                 text
+                :to="'/games/' + game.id"
               >
                 See More
                 <v-icon color="orange" class="icon">search</v-icon>
@@ -50,8 +53,12 @@
 
 export default {
   name: 'Games',
-  components: {
-    
+  components: {},
+  
+  computed: {
+    games(){
+      return this.$store.getters.games
+    }
   }
 }
 </script>

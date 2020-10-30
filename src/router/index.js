@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Frontpage from '../views/Frontpage.vue'
 import Home from '../views/Home.vue'
 import Games from '../views/Games.vue'
+import Game from '../views/Game.vue'
 import About from '../views/About.vue'
 import Admin from '../views/Admin.vue'
 import Login from '../components/admin/Login.vue'
@@ -27,6 +28,12 @@ const routes = [
     path: '/games',
     name: 'Games',
     component: Games
+  },
+  {
+    path: '/games/:id',
+    name: 'Game',
+    props: true,
+    component: Game
   },
   {
     path: '/about',
