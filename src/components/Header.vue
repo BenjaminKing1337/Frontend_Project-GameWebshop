@@ -3,7 +3,7 @@
     <header v-if="!$route.meta.hide">
       <div class="logo" id="center">
         <router-link to="/">
-          <img src="../assets/logo.png" alt="logo" height="50px" />
+          <v-icon class="ml-5 mt-2" color="black" x-large>account_circle</v-icon>
         </router-link>
       </div>
 
@@ -27,8 +27,11 @@
             <router-link tag="li" to="/admin">
               <v-icon class="icon" color="black">lock</v-icon><br />Admin
             </router-link>
+            <router-link tag="li" to="/Signup">
+              <v-icon class="icon" color="black">login</v-icon><br />SignUp
+            </router-link>
             <router-link tag="li" to="/login">
-              <v-icon class="icon" color="black">login</v-icon><br />Login
+              <v-icon class="icon" color="black">login</v-icon><br />LogIn
             </router-link>
             <div class="dpCloseBtn" tag="li" @click="drawer = !drawer">
               <v-icon class="icon material-icons md-48" color="red">menu</v-icon>
@@ -38,7 +41,7 @@
       </div>
 
       <div class="checkout" id="center">
-        <v-icon color="black">shopping_basket</v-icon>
+        <v-icon class="ml-9 mt-2" color="black" x-large>shopping_basket</v-icon>
       </div>
     </header>
   </div>
@@ -108,5 +111,8 @@ li:hover {
   .icon {
     color:map-get($Colorscheme, secondary) !important;
   }
+}
+a{
+  text-decoration: none;
 }
 </style>

@@ -6,7 +6,8 @@ import Games from '../views/Games.vue'
 import Game from '../views/Game.vue'
 import About from '../views/About.vue'
 import Admin from '../views/Admin.vue'
-import Login from '../components/admin/Login.vue'
+import SignUp from '../components/User/SignUp.vue'
+import Login from '../components/User/Login.vue'
 
 
 
@@ -44,6 +45,11 @@ const routes = [
     path: '/admin',
     name: 'Admin',
     component: Admin
+  },
+  {
+    path: '/signin',
+    name: 'SignUp',
+    component: SignUp
   },
   {
     path: '/login',
