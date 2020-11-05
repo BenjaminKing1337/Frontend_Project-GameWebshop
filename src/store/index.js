@@ -28,7 +28,9 @@ const store = new Vuex.Store({
         price:'180',
       }
     ],
-    user: null
+    user: null,
+    loading: false,
+    error: null,
   },
   mutations: {
     ADD_PRODUCT(state, payload){
@@ -39,9 +41,51 @@ const store = new Vuex.Store({
     },
     SET_USER(state, payload){
       state.user = payload
+    },
+    SET_LOADING (state, payload){
+      state.loading = payload
+    },
+    SET_ERROR (state, payload){
+      state.error = payload
+    },
+    CLEAR_ERROR (state){
+      state.error = null
+    },
+    SET_LOADED_GAMES(state, payload){
+      state.games = payload
     }
+
   },
   actions: {
+    loadProducts({commit}) {
+      commit('setLoading', true)
+      firebase.database().ref('games').once('value')
+        .then((data) => {
+          const games = []
+          const obj = data.val()
+          for (let key in obj) {
+            games.push({
+              id:key,
+              title:obj[key].title,
+              genre:obj[key].genre,
+              platform:obj[key].platform,
+              imageUrl:obj[key].imageUrl,
+              videoUrl:obj[key].videoUrl,
+              description:obj[key].description,
+              price:obj[key].price,
+
+            })
+          }
+          commit('SET_LOADED_GAMES', games)
+          commit('setLoading', false)
+        })
+        .catch(
+          (error) => {
+            console.log(error)
+            commit('setLoading', true)
+          }
+        )
+    },
     add_product({commit}, payload){
       const game = {
         title: payload.title,
@@ -51,18 +95,31 @@ const store = new Vuex.Store({
         videoUrl: payload.videoUrl,
         description: payload.description,
         price: payload.price,
-        id: 'rvrvrv888'
       }
+      firebase.database().ref('games').push(game)
+        .then((data) => {
+          const key = data.key
+          commit('ADD_PRODUCT', {
+            ...game,
+            id: key
+          })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
       //reach out to firebase and store it
-      commit('ADD_PRODUCT', game)
+      
     },
     remove_product({commit},game){
       commit('REMOVE_PRODUCT',game)
     },
     signUserUp({commit}, payload){
+      commit('SET_LOADING', true)
+      commit('CLEAR_ERROR')
       firebase.auth().createUserwithEmailandPassword(payload.email, payload.password)
         .then(
           user => {
+            commit('SET_LOADING', false)
             const newUser = {
               id: user.uid
             }
@@ -71,14 +128,19 @@ const store = new Vuex.Store({
         )
         .catch(
           error => {
+            commit('SET_LOADING', false)
+            commit('SET_ERROR', error)
             console.log(error)
           }
         )
     },
     logUserIn({commit}, payload){
+      commit('SET_LOADING', false)
+      commit('CLEAR_ERROR')
       firebase.auth().signInUserwithEmailandPassword(payload.email, payload.password)
       .then(
         user => {
+          commit('SET_LOADING', false)
           const newUser = {
             id: user.uid
           }
@@ -87,9 +149,21 @@ const store = new Vuex.Store({
       )
       .catch(
         error => {
+          commit('SET_LOADING', false)
+          commit('SET_ERROR', error)
           console.log(error)
         }
       )
+    },
+    autoSignIn({commit}, payload){
+      commit('setUser', {id: payload.uid})
+    },
+    logout ({commit}){
+      firebase.auth().signOut()
+      commit('SET_USER', null)
+    },
+    clearError({commit}){
+      commit('CLEAR_ERROR')
     }
   },
   getters: {
@@ -107,6 +181,12 @@ const store = new Vuex.Store({
       return state.user
     }
   },
+  loading(state){
+    return state.loading
+  },
+  error(state){
+    return state.error
+  }
   
 })
 

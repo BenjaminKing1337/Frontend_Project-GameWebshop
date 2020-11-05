@@ -4,8 +4,11 @@ import firebase from 'firebase/app'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
+import Alert from './components/User/Alert.vue'
 
 Vue.config.productionTip = false
+
+Vue.component('app-alert', Alert)
 
 new Vue({
   router,
@@ -20,5 +23,11 @@ new Vue({
       projectId: "game-webshop-2020",
       storageBucket: "game-webshop-2020.appspot.com",
     })
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch('autoSignIn', user)
+      }
+    })
+    this.$store.dispatch('loadProducts')
   },
 }).$mount('#app')
