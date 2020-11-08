@@ -133,7 +133,7 @@
                             </td>
                             <td>
                                 <v-btn text fab>
-                                    <v-icon color="red">delete</v-icon>
+                                    <v-icon color="red" @click="remove_products(game)">delete</v-icon>
                                 </v-btn>
                             </td>
                             
@@ -194,7 +194,7 @@
                 this.$router.push('/games');
             },
             remove_products(game){
-                this.$store.dispatch('remove_product', game)
+                this.$store.dispatch('removeProduct', game)
             }
         }
     }

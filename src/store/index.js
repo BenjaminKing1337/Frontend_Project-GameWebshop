@@ -15,8 +15,9 @@ const store = new Vuex.Store({
     ADD_PRODUCT(state, payload){
       state.games.push(payload)
     },
-    REMOVE_PRODUCT(state, game){
-      state.games.splice(game, 1)
+    REMOVE_PRODUCT(state, gameId){
+      let games = state.games.filter(g => g.id != gameId)
+      state.games = games
     },
     UPDATE_DATA(state, payload){
       const game = state.games.find(game => {
@@ -27,6 +28,21 @@ const store = new Vuex.Store({
       }
       if (payload.description){
         game.description= payload.description
+      }
+      if (payload.genre){
+        game.genre= payload.genre
+      }
+      if (payload.platform){
+        game.platform= payload.platform
+      }
+      if (payload.imageUrl){
+        game.imageUrl= payload.imageUrl
+      }
+      if (payload.videoUrl){
+        game.videoUrl= payload.videoUrl
+      }
+      if (payload.price){
+        game.price= payload.price
       }
     },
     SET_USER(state, payload){
@@ -104,8 +120,13 @@ const store = new Vuex.Store({
       //reach out to firebase and store it
       
     },
-    remove_product({commit},game){
-      commit('REMOVE_PRODUCT',game)
+    removeProduct({commit},game){
+      commit('SET_LOADING', true)
+      firebase.database().ref('games').child(game.id).remove()
+        .then(() => {
+          commit('SET_LOADING', false)
+          commit('REMOVE_PRODUCT',game.id)
+        })
     },
     updateData({commit}, payload){
       commit('SET_LOADING', true)
@@ -115,6 +136,21 @@ const store = new Vuex.Store({
       }
       if (payload.description){
         updateObj.description = payload.description
+      }
+      if (payload.genre){
+        updateObj.genre= payload.genre
+      }
+      if (payload.platform){
+        updateObj.platform= payload.platform
+      }
+      if (payload.imageUrl){
+        updateObj.imageUrl= payload.imageUrl
+      }
+      if (payload.videoUrl){
+        updateObj.videoUrl= payload.videoUrl
+      }
+      if (payload.price){
+        updateObj.price= payload.price
       }
       firebase.database().ref('games').child(payload.id).update(updateObj)
         .then(() => {

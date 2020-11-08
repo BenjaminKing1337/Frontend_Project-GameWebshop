@@ -30,6 +30,41 @@
                                     v-model="editedDescription"
                                     required
                                 ></v-textarea>
+                                <v-text-field
+                                    name="genre"
+                                    label="Genre"
+                                    id="genre"
+                                    v-model="editedGenre"
+                                    required
+                                ></v-text-field>
+                                <v-text-field
+                                    name="platform"
+                                    label="Platform"
+                                    id="platform"
+                                    v-model="editedPlatform"
+                                    required
+                                ></v-text-field>
+                                <v-text-field
+                                    name="imageUrl"
+                                    label="Image URL"
+                                    id="imageUrl"
+                                    v-model="editedImageUrl"
+                                    required
+                                ></v-text-field>
+                                <v-text-field
+                                    name="videoUrl"
+                                    label="Video URL"
+                                    id="videoUrl"
+                                    v-model="editedVideoUrl"
+                                    required
+                                ></v-text-field>
+                                <v-text-field
+                                    name="price"
+                                    label="Price"
+                                    id="price"
+                                    v-model="editedPrice"
+                                    required
+                                ></v-text-field>
                         </v-card-text>
                     </v-flex>
                 </v-layout>
@@ -39,7 +74,7 @@
                         <v-card-actions>
                             <v-btn text @click="dialog = false">Close</v-btn>
                             <v-spacer></v-spacer>
-                            <v-btn text @click="onSaveChanges">Save</v-btn>
+                            <v-btn class="green--text" text @click="onSaveChanges">Save</v-btn>
                         </v-card-actions>
                     </v-flex>
                 </v-layout>
@@ -56,18 +91,28 @@
                 dialog: false,
                 editedTitle: this.game.title,
                 editedDescription: this.game.description,
+                editedGenre: this.game.genre,
+                editedPlatform: this.game.platform,
+                editedImageUrl: this.game.imageUrl,
+                editedVideoUrl: this.game.videoUrl,
+                editedPrice: this.game.price,
             }
         },
         methods:{
             onSaveChanges(){
-                if(this.editedTitle.trim() === '' || this.editedDescription.trim() === ''){
+                if(this.editedTitle.trim() === '' || this.editedDescription.trim() === '' || this.editedGenre.trim() === '' || this.editedPlatform.trim() === '' || this.editedImageUrl.trim() === '' || this.editedVideoUrl.trim() === '' || this.editedPrice.trim() === ''){
                     return
                 }
                 this.dialog = false
                 this.$store.dispatch('updateData', {
                     id: this.game.id,
                     title: this.editedTitle,
-                    description: this.editedDescription
+                    description: this.editedDescription,
+                    genre: this.editedGenre,
+                    platform: this.editedPlatform,
+                    imageUrl: this.editedImageUrl,
+                    videoUrl: this.editedVideoUrl,
+                    price: this.editedPrice
                 })
             }
 
