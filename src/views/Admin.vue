@@ -71,14 +71,14 @@
                         </v-layout>
                         <v-layout row>
                             <v-flex xs8 sm6 offset-sm3 offset-xs2>
-                                <v-text-field
+                                <v-textarea
                                     name="description"
                                     label="Description"
                                     id="description"
                                     v-model="description"
                                     multi-line
                                     required
-                                ></v-text-field>
+                                ></v-textarea>
                             </v-flex>
                         </v-layout>
                         <v-layout row>
@@ -107,25 +107,41 @@
                 </v-flex>
             </v-layout>
         </v-container>
-        <v-flex xs10 sm6 offset-sm3 offset-xs1>
-            <v-simple-table class="my-6">
-                <tbody>
-                    <tr v-for="game in games" :key="game.index">
-                        <td>
-                            <span class="font-weight-bold">{{ game.title }}</span> <br>
-                            <span class="font-weight-light">{{ game.genre }}</span> <br>
-                            <span class="font-weight-light">{{ game.platform}}</span> <br>
-                            <span>{{ game.price }} DKK</span>
-                        </td>
-                        <td>
-                            <v-btn @click="remove_products(game.index)">
-                                <v-icon color="red">delete</v-icon>
-                            </v-btn>
-                        </td>
-                    </tr>
-                </tbody>
-            </v-simple-table>
-        </v-flex>
+        <v-layout row wrap v-if="loading">
+            <v-flex xs12 class="text-xs-center">
+                <v-progress-circular
+                indeterminate
+                class="primary--text"
+                :width="7"
+                :size="70"
+                ></v-progress-circular>
+            </v-flex>
+        </v-layout>
+        <v-layout v-else>
+            <v-flex xs10 sm6 offset-sm3 offset-xs1>
+                <v-simple-table class="my-6">
+                    <tbody>
+                        <tr v-for="game in games" :key="game.index">
+                            <td>
+                                <span class="font-weight-bold">{{ game.title }}</span> <br>
+                                <span class="font-weight-light">{{ game.genre }}</span> <br>
+                                <span class="font-weight-light">{{ game.platform}}</span> <br>
+                                <span>{{ game.price }} DKK</span>
+                            </td>
+                            <td>
+                                <product-edit :game="game"></product-edit>
+                            </td>
+                            <td>
+                                <v-btn text fab>
+                                    <v-icon color="red">delete</v-icon>
+                                </v-btn>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </v-simple-table>
+            </v-flex>
+        </v-layout>
     </div>
 </template>
 
@@ -155,6 +171,9 @@
             },
             games(){
                 return this.$store.getters.games
+            },
+            loading () {
+                return this.$store.getters.loading
             },
         },
         methods:{

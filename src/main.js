@@ -1,14 +1,18 @@
 import Vue from 'vue'
 import App from './App.vue'
-import firebase from 'firebase/app'
+import firebase from 'firebase'
+import "firebase/auth"
+import "firebase/firestore"
 import router from './router'
 import store from './store'
-import vuetify from './plugins/vuetify';
+import vuetify from './plugins/vuetify'
 import Alert from './components/User/Alert.vue'
+import Edit from './components/Edit.vue'
 
 Vue.config.productionTip = false
 
 Vue.component('app-alert', Alert)
+Vue.component('product-edit', Edit)
 
 new Vue({
   router,
@@ -22,7 +26,7 @@ new Vue({
       databaseURL: "https://game-webshop-2020.firebaseio.com",
       projectId: "game-webshop-2020",
       storageBucket: "game-webshop-2020.appspot.com",
-    })
+    });
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.$store.dispatch('autoSignIn', user)
