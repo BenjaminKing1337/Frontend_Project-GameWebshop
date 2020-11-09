@@ -13,6 +13,7 @@
         </v-btn>
 
         <p class="dropdownOpen" v-show="drawer" >
+        <p class="dropdownOpen" v-show="drawer">
           <v-list>
             <router-link tag="li" to="/home">
               <v-icon class="icon" color="black">home</v-icon><br />Home
@@ -35,6 +36,9 @@
             </router-link>
             <div class="dpCloseBtn" tag="li" @click="drawer = !drawer">
               <v-icon class="icon material-icons md-48" color="red">menu</v-icon>
+              <v-icon class="icon material-icons md-48" color="red"
+                >menu</v-icon
+              >
             </div>
           </v-list>
         </p>
@@ -62,20 +66,30 @@ header {
   justify-content: space-between;
 }
 .logo {
-  min-width: 100px;
-  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
+  min-width: auto;
+  padding: 0 20px;
+  background: linear-gradient(
+    map-get($Colorscheme, secondary),
+    map-get($Colorscheme, primary)
+  );
   border-radius: 0 0 70px 0;
 }
 .nav {
   height: 60px !important;
-  width: 300px;
-  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
+  width: auto;
+  background: linear-gradient(
+    map-get($Colorscheme, secondary),
+    map-get($Colorscheme, primary)
+  );
   border-radius: 0 0 70px 70px;
   list-style: none;
   text-align: center;
 }
 .theme--light.v-list {
-  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
+  background: linear-gradient(
+    map-get($Colorscheme, secondary),
+    map-get($Colorscheme, primary)
+  );
   text-align: center;
   list-style: none;
   border-radius: 0 0 70px 70px;
@@ -95,21 +109,25 @@ header {
   font-size: 5px;
 }
 .checkout {
-  min-width: 100px;
-  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
+  min-width: auto;
+  padding: 0 20px;
+  background: linear-gradient(
+    map-get($Colorscheme, secondary),
+    map-get($Colorscheme, primary)
+  );
   border-radius: 0 0 0 70px;
 }
 .dpCloseBtn:hover {
-  background-color:map-get($Colorscheme, primary) !important;
+  background-color: map-get($Colorscheme, primary) !important;
   .icon {
-    color:map-get($Colorscheme, secondary) !important;
+    color: map-get($Colorscheme, secondary) !important;
   }
 }
 li:hover {
   background-color: black;
-  color:map-get($Colorscheme, secondary);
+  color: map-get($Colorscheme, secondary);
   .icon {
-    color:map-get($Colorscheme, secondary) !important;
+    color: map-get($Colorscheme, secondary) !important;
   }
 }
 a{

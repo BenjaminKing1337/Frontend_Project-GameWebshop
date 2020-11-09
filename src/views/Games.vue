@@ -1,4 +1,5 @@
 <template>
+<<<<<<< Updated upstream
   <div>
     <div class="searchbar"></div>
     <div class="games">
@@ -57,6 +58,49 @@
           </div>
         </v-card>
       </v-layout>
+=======
+  <div class="box">
+    <div class="gridcontainer">
+      <div><div>
+        <img src="../assets/logo.png" alt="logo" height="50px" />
+
+        <h1>Game</h1>
+        <p>this is a game about...</p>
+      </div></div>
+      <div>
+        <h1>Game</h1>
+      </div>
+      <div>
+        <h1>Game</h1>
+      </div>
+      <div>
+        <h1>Game</h1>
+      </div>
+      <div>
+        <h1>Game</h1>
+      </div>
+      <div>
+        <h1>Game</h1>
+      </div>
+      <div>
+        <h1>Game</h1>
+      </div>
+      <div>
+        <h1>Game</h1>
+      </div>
+      <div>
+        <h1>Game</h1>
+      </div>
+      <div>
+        <h1>Game</h1>
+      </div>
+      <div>
+        <h1>Game</h1>
+      </div>
+      <div>
+        <h1>Game</h1>
+      </div>
+>>>>>>> Stashed changes
     </div>
   </div>
 </template>
@@ -64,6 +108,7 @@
 <script>
 
 export default {
+<<<<<<< Updated upstream
   name: 'Games',
   components: {},
   
@@ -120,4 +165,32 @@ export default {
   }
 
 
+=======
+  name: "Games",
+  components: {},
+};
+</script>
+
+<style lang="scss" scoped>
+.box {
+  max-width: 70%;
+  margin: auto;
+  margin-top: 50px;
+}
+.gridcontainer {
+  display: grid;
+  justify-content: space-between;
+  align-content: space-between;
+  grid-template-columns: 20% 20% 20% 20%;
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 10px;
+  padding: 10px;
+  text-align: center;
+  div {
+    height: 100px;
+    width: 100px;
+    border: 1px solid map-get($Colorscheme, primary);
+  }
+}
+>>>>>>> Stashed changes
 </style>
