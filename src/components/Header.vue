@@ -12,7 +12,6 @@
           <v-icon class="icon" color="black">menu</v-icon>
         </v-btn>
 
-        <p class="dropdownOpen" v-show="drawer" >
         <p class="dropdownOpen" v-show="drawer">
           <v-list>
             <router-link tag="li" to="/home">
@@ -35,7 +34,6 @@
               <v-icon class="icon" color="black">login</v-icon><br />LogIn
             </router-link>
             <div class="dpCloseBtn" tag="li" @click="drawer = !drawer">
-              <v-icon class="icon material-icons md-48" color="red">menu</v-icon>
               <v-icon class="icon material-icons md-48" color="red"
                 >menu</v-icon
               >
