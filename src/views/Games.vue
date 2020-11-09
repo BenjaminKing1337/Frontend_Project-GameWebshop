@@ -106,7 +106,6 @@
 </template>
 
 <script>
-
 export default {
 <<<<<<< Updated upstream
   name: 'Games',
