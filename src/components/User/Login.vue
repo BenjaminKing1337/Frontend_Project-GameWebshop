@@ -27,7 +27,7 @@
                                     <v-flex xs12>
                                         <v-text-field
                                             name="assword"
-                                            label="password"
+                                            label="Password"
                                             id="password"
                                             v-model="password"
                                             type="password"
@@ -38,6 +38,15 @@
                                     <v-flex xs12>
                                         <v-btn type="submit" :disabled="loading" :loading="loading">
                                             Log in
+                                            <template v-slot:loader>
+                                                <span class="custom-loader">
+                                                    <v-icon light>mdi-cached</v-icon>
+                                                </span>
+                                            </template>
+                                        </v-btn>
+
+                                        <v-btn @click="onLogout" :disabled="loading" :loading="loading">
+                                            Log Out
                                             <template v-slot:loader>
                                                 <span class="custom-loader">
                                                     <v-icon light>mdi-cached</v-icon>
@@ -77,7 +86,7 @@
         watch:{
             user(value){
                 if (value !== null && value !== undefined){
-                    this.$router.push('/')
+                    this.$router.push('/home')
                 }
             }
         },
@@ -88,6 +97,9 @@
             },
             onDismissed(){
                 this.$store.dispatch('clearError')
+            },
+            onLogout(){
+                this.$store.dispatch('logout')
             }
         }
     }

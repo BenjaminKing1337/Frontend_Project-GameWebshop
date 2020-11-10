@@ -186,7 +186,7 @@ const store = new Vuex.Store({
     logUserIn({commit}, payload){
       commit('SET_LOADING', false)
       commit('CLEAR_ERROR')
-      firebase.auth().signInUserwithEmailandPassword(payload.email, payload.password)
+      firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(
         user => {
           commit('SET_LOADING', false)

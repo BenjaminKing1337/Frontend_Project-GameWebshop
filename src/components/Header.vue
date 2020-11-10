@@ -2,9 +2,8 @@
   <div>
     <header v-if="!$route.meta.hide">
       <div class="logo" id="center">
-        <router-link to="/">
-          <v-icon class="ml-5 mt-2" color="black" x-large>account_circle</v-icon>
-        </router-link>
+          <v-icon v-if="userIsAuthenticated" class="ml-5 mt-2" color="green" x-large>account_circle</v-icon>
+          <v-icon v-else class="ml-5 mt-2" color="black" x-large>account_circle</v-icon>
       </div>
 
       <div>
@@ -14,24 +13,9 @@
 
         <p class="dropdownOpen" v-show="drawer" >
           <v-list>
-            <router-link tag="li" to="/home">
-              <v-icon class="icon" color="black">home</v-icon><br />Home
-            </router-link>
-            <router-link tag="li" to="/games">
-              <v-icon class="icon" color="black">videogame_asset</v-icon
-              ><br />Games
-            </router-link>
-            <router-link tag="li" to="/about">
-              <v-icon class="icon" color="black">info</v-icon><br />About
-            </router-link>
-            <router-link tag="li" to="/admin">
-              <v-icon class="icon" color="black">lock</v-icon><br />Admin
-            </router-link>
-            <router-link tag="li" to="/Signup">
-              <v-icon class="icon" color="black">login</v-icon><br />SignUp
-            </router-link>
-            <router-link tag="li" to="/login">
-              <v-icon class="icon" color="black">login</v-icon><br />LogIn
+            <router-link tag="li" class="py-2" v-for="item in menuItems" :key="item.title" :to="item.link">
+              <v-icon class="icon" color="black">{{item.icon}}</v-icon>
+              <v-list-tile-content>{{ item.title }}</v-list-tile-content>
             </router-link>
             <div class="dpCloseBtn" tag="li" @click="drawer = !drawer">
               <v-icon class="icon material-icons md-48" color="red">menu</v-icon>
@@ -41,7 +25,7 @@
       </div>
 
       <div class="checkout" id="center">
-        <v-icon class="ml-9 mt-2" color="black" x-large>shopping_basket</v-icon>
+        <v-icon class="mr-5 mt-2" color="black" x-large>shopping_basket</v-icon>
       </div>
     </header>
   </div>
@@ -52,7 +36,30 @@ export default {
   data: () => ({
     drawer: false,
   }),
-};
+   computed: {
+      menuItems () {
+        let menuItems = [
+          {icon: 'home', title: 'Home', link: '/home'},
+          {icon: 'videogame_asset', title: 'Games', link: '/games'},
+          {icon: 'info', title: 'About', link: '/about'},
+          {icon: 'login', title: 'LogIn', link: '/login'},
+        ]
+        if (this.userIsAuthenticated) {
+          menuItems = [
+            {icon: 'home', title: 'Home', link: '/home'},
+            {icon: 'videogame_asset', title: 'Games', link: '/games'},
+            {icon: 'info', title: 'About', link: '/about'},
+            {icon: 'login', title: 'LogIn', link: '/login'},
+            {icon: 'lock', title: 'Admin', link: '/admin'},
+          ]
+        }
+        return menuItems
+      },
+      userIsAuthenticated () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      }
+   }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -61,11 +68,7 @@ header {
   display: flex;
   justify-content: space-between;
 }
-.logo {
-  min-width: 100px;
-  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
-  border-radius: 0 0 70px 0;
-}
+
 .nav {
   height: 60px !important;
   width: 300px;
@@ -94,20 +97,18 @@ header {
   border-radius: 0 0 70px 70px;
   font-size: 5px;
 }
-.checkout {
-  min-width: 100px;
-  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
-  border-radius: 0 0 0 70px;
-}
+
 .dpCloseBtn:hover {
   background-color:map-get($Colorscheme, primary) !important;
   .icon {
     color:map-get($Colorscheme, secondary) !important;
   }
 }
+
 li:hover {
   background-color: black;
   color:map-get($Colorscheme, secondary);
+  cursor: pointer;
   .icon {
     color:map-get($Colorscheme, secondary) !important;
   }
@@ -115,4 +116,5 @@ li:hover {
 a{
   text-decoration: none;
 }
+
 </style>
