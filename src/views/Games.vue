@@ -1,5 +1,4 @@
 <template>
-<<<<<<< Updated upstream
   <div>
     <div class="searchbar"></div>
     <div class="games">
@@ -58,56 +57,12 @@
           </div>
         </v-card>
       </v-layout>
-=======
-  <div class="box">
-    <div class="gridcontainer">
-      <div><div>
-        <img src="../assets/logo.png" alt="logo" height="50px" />
-
-        <h1>Game</h1>
-        <p>this is a game about...</p>
-      </div></div>
-      <div>
-        <h1>Game</h1>
-      </div>
-      <div>
-        <h1>Game</h1>
-      </div>
-      <div>
-        <h1>Game</h1>
-      </div>
-      <div>
-        <h1>Game</h1>
-      </div>
-      <div>
-        <h1>Game</h1>
-      </div>
-      <div>
-        <h1>Game</h1>
-      </div>
-      <div>
-        <h1>Game</h1>
-      </div>
-      <div>
-        <h1>Game</h1>
-      </div>
-      <div>
-        <h1>Game</h1>
-      </div>
-      <div>
-        <h1>Game</h1>
-      </div>
-      <div>
-        <h1>Game</h1>
-      </div>
->>>>>>> Stashed changes
     </div>
   </div>
 </template>
 
 <script>
 export default {
-<<<<<<< Updated upstream
   name: 'Games',
   components: {},
   
@@ -160,18 +115,7 @@ export default {
   }
  
   @media only screen and (max-width: 900px){
-
-  }
-
-
-=======
-  name: "Games",
-  components: {},
-};
-</script>
-
-<style lang="scss" scoped>
-.box {
+    .box {
   max-width: 70%;
   margin: auto;
   margin-top: 50px;
@@ -191,5 +135,7 @@ export default {
     border: 1px solid map-get($Colorscheme, primary);
   }
 }
->>>>>>> Stashed changes
+  }
+
+
 </style>
