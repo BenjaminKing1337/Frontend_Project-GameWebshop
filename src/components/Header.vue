@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header v-if="!$route.meta.hide">
+    <header v-if="!$route.meta.hide" elevate-on-scroll>
       <div class="logo" id="center">
           <v-icon v-if="userIsAuthenticated" class="ml-5 mt-2" color="green" x-large>account_circle</v-icon>
           <v-icon v-else class="ml-5 mt-2" color="black" x-large>account_circle</v-icon>

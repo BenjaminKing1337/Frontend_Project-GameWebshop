@@ -12,11 +12,10 @@
                 ></v-progress-circular>
             </v-flex>
       </v-layout>
-      <v-layout v-else>
+      <v-layout id="all_games" v-else class="mb-5">
         <v-card
           max-width="288"
           v-for="game in games" :key="game.id"
-          class="mr-5 ml-5"
         >
           <v-img
             class="white--text align-end"
@@ -85,9 +84,6 @@ export default {
     margin: 5% auto 2% auto;
   }
   .games{
-    width: 80%;
-    display: flex;
-    margin: 0 auto;
     .wrap{
       display: flex;
       justify-content: space-between;
@@ -113,29 +109,35 @@ export default {
     }
     
   }
+  #all_games{
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    justify-items: center;
+    
+  }
+  @media only screen and (max-width: 1515px){
+   
+    #all_games{
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media only screen and (max-width: 1200px){
+   
+    #all_games{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
  
-  @media only screen and (max-width: 900px){
-    .box {
-  max-width: 70%;
-  margin: auto;
-  margin-top: 50px;
-}
-.gridcontainer {
-  display: grid;
-  justify-content: space-between;
-  align-content: space-between;
-  grid-template-columns: 20% 20% 20% 20%;
-  grid-auto-rows: minmax(100px, auto);
-  grid-gap: 10px;
-  padding: 10px;
-  text-align: center;
-  div {
-    height: 100px;
-    width: 100px;
-    border: 1px solid map-get($Colorscheme, primary);
+  @media only screen and (max-width: 760px){
+   
+    #all_games{
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
-}
-  }
+  
 
 
 </style>
