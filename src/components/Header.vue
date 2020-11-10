@@ -3,7 +3,7 @@
     <header v-if="!$route.meta.hide">
       <div class="logo" id="center">
           <v-icon v-if="userIsAuthenticated" class="ml-5 mt-2" color="green" x-large>account_circle</v-icon>
-          <v-icon v-else class="ml-5 mt-2" color="blackw" x-large>account_circle</v-icon>
+          <v-icon v-else class="ml-5 mt-2" color="black" x-large>account_circle</v-icon>
       </div>
 
       <div>
@@ -70,18 +70,10 @@ header {
   display: flex;
   justify-content: space-between;
 }
-.logo {
-  min-width: auto;
-  padding: 0 20px;
-  background: linear-gradient(
-    map-get($Colorscheme, secondary),
-    map-get($Colorscheme, primary)
-  );
-  border-radius: 0 0 70px 0;
-}
+
 .nav {
   height: 60px !important;
-  width: auto;
+  width: 200px;
   background: linear-gradient(
     map-get($Colorscheme, secondary),
     map-get($Colorscheme, primary)
@@ -112,15 +104,6 @@ header {
   background: none !important;
   border-radius: 0 0 70px 70px;
   font-size: 5px;
-}
-.checkout {
-  min-width: auto;
-  padding: 0 20px;
-  background: linear-gradient(
-    map-get($Colorscheme, secondary),
-    map-get($Colorscheme, primary)
-  );
-  border-radius: 0 0 0 70px;
 }
 .dpCloseBtn:hover {
   background-color: map-get($Colorscheme, primary) !important;
