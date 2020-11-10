@@ -3,7 +3,7 @@
     <header v-if="!$route.meta.hide">
       <div class="logo" id="center">
           <v-icon v-if="userIsAuthenticated" class="ml-5 mt-2" color="green" x-large>account_circle</v-icon>
-          <v-icon v-else class="ml-5 mt-2" color="black" x-large>account_circle</v-icon>
+          <v-icon v-else class="ml-5 mt-2" color="blackw" x-large>account_circle</v-icon>
       </div>
 
       <div>
@@ -11,14 +11,16 @@
           <v-icon class="icon" color="black">menu</v-icon>
         </v-btn>
 
-        <p class="dropdownOpen" v-show="drawer" >
+        <p class="dropdownOpen" v-show="drawer">
           <v-list>
             <router-link tag="li" class="py-2" v-for="item in menuItems" :key="item.title" :to="item.link">
               <v-icon class="icon" color="black">{{item.icon}}</v-icon>
               <v-list-tile-content>{{ item.title }}</v-list-tile-content>
             </router-link>
             <div class="dpCloseBtn" tag="li" @click="drawer = !drawer">
-              <v-icon class="icon material-icons md-48" color="red">menu</v-icon>
+              <v-icon class="icon material-icons md-48" color="red"
+                >menu</v-icon
+              >
             </div>
           </v-list>
         </p>
@@ -68,17 +70,31 @@ header {
   display: flex;
   justify-content: space-between;
 }
-
+.logo {
+  min-width: auto;
+  padding: 0 20px;
+  background: linear-gradient(
+    map-get($Colorscheme, secondary),
+    map-get($Colorscheme, primary)
+  );
+  border-radius: 0 0 70px 0;
+}
 .nav {
   height: 60px !important;
-  width: 300px;
-  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
+  width: auto;
+  background: linear-gradient(
+    map-get($Colorscheme, secondary),
+    map-get($Colorscheme, primary)
+  );
   border-radius: 0 0 70px 70px;
   list-style: none;
   text-align: center;
 }
 .theme--light.v-list {
-  background: linear-gradient(map-get($Colorscheme, secondary), map-get($Colorscheme, primary));
+  background: linear-gradient(
+    map-get($Colorscheme, secondary),
+    map-get($Colorscheme, primary)
+  );
   text-align: center;
   list-style: none;
   border-radius: 0 0 70px 70px;
@@ -97,20 +113,27 @@ header {
   border-radius: 0 0 70px 70px;
   font-size: 5px;
 }
-
+.checkout {
+  min-width: auto;
+  padding: 0 20px;
+  background: linear-gradient(
+    map-get($Colorscheme, secondary),
+    map-get($Colorscheme, primary)
+  );
+  border-radius: 0 0 0 70px;
+}
 .dpCloseBtn:hover {
-  background-color:map-get($Colorscheme, primary) !important;
+  background-color: map-get($Colorscheme, primary) !important;
   .icon {
-    color:map-get($Colorscheme, secondary) !important;
+    color: map-get($Colorscheme, secondary) !important;
   }
 }
 
 li:hover {
   background-color: black;
-  color:map-get($Colorscheme, secondary);
-  cursor: pointer;
+  color: map-get($Colorscheme, secondary);
   .icon {
-    color:map-get($Colorscheme, secondary) !important;
+    color: map-get($Colorscheme, secondary) !important;
   }
 }
 a{
