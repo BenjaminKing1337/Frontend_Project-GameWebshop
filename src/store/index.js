@@ -162,7 +162,7 @@ const store = new Vuex.Store({
           commit('SET_LOADING', false)
         })
     },
-    signUserUp({commit}, payload){
+   /*  signUserUp({commit}, payload){
       commit('SET_LOADING', true)
       commit('CLEAR_ERROR')
       firebase.auth().createUserwithEmailandPassword(payload.email, payload.password)
@@ -181,10 +181,10 @@ const store = new Vuex.Store({
             commit('SET_ERROR', error)
             console.log(error)
           }
-        )
-    },
+        ) 
+    },*/
     logUserIn({commit}, payload){
-      commit('SET_LOADING', false)
+      commit('SET_LOADING', true)
       commit('CLEAR_ERROR')
       firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(
