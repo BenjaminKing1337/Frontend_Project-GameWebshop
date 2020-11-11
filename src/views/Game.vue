@@ -6,6 +6,7 @@
                 class="mx-auto my-10 pa-1"  
                 max-width="90%" 
             >
+                <v-icon @click="goBack" id="close" color="teal accent-4" x-large>clear</v-icon>
                 <v-img
                 class="white--text align-end"
                 height="auto"
@@ -73,11 +74,21 @@
             this.$store.commit('addBasketItems', this.basketDump);
             this.basketDump = [];
             },
+            goBack(){
+                return this.$router.go(-1)
+            }
         }
     }
 </script>
 
 <style lang="scss" scoped>
+    #close{
+        position: absolute;
+        z-index: 2;
+        background-color: #424242;
+        border-radius: 50px;
+        margin: -15px 0 0 -15px;
+    }
     .resp-container {
         position: relative;
         overflow: hidden;

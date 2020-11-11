@@ -25,9 +25,11 @@ export default {
 
 <style lang="scss">
 @import "./src/styles/variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
 
 .body{
   background: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+  font-family: 'Syne Mono', monospace;
 }
 
 </style>
