@@ -2,8 +2,8 @@
   <div>
     <header v-if="!$route.meta.hide" elevate-on-scroll>
       <div class="logo" id="center">
-          <v-icon v-if="userIsAuthenticated" class="ml-5 mt-2" color="teal accent-2" x-large>account_circle</v-icon>
-          <v-icon v-else class="ml-5 mt-2" color="grey darken-3" x-large>account_circle</v-icon>
+          <v-icon id="icon" v-if="userIsAuthenticated" class="ml-5 mt-2" color="white" x-large>account_circle</v-icon>
+          <v-icon id="icon" v-else class="ml-5 mt-2" color="grey darken-3" x-large>account_circle</v-icon>
       </div>
       <v-menu
         transition="slide-y-transition"
@@ -83,6 +83,11 @@ header {
 
 .logo{
   position: fixed;
+  z-index: 3;
+  #icon{
+    background-color: #00BFA5;
+    border-radius: 50px;
+  }
 }
 .btn{
   width: 200px;
@@ -108,6 +113,7 @@ header {
 }
 .basket{
   position: fixed;
+  z-index: 3;
   right: 0;
 }
 

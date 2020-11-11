@@ -12,19 +12,19 @@
         </v-layout>
         <v-layout v-else>
             <v-card
-                class="mx-auto my-10 pa-3"  
-                max-width="80%" 
+                class="mx-auto my-10 pa-1"  
+                max-width="90%" 
             >
                 <v-img
                 class="white--text align-end"
                 height="auto"
                 :src="game.imageUrl"
                 >
-                <v-card-title style="background-color: #00000099;">{{game.title}}</v-card-title>
+                    <v-card-title style="background-color: #00000099;">{{game.title}}</v-card-title>
                 </v-img>
                 <v-card-subtitle class="pb-0">
-                <div> {{game.genre}} </div>
-                <div class="font-weight-medium"> {{game.platform}} </div>
+                    <div> {{game.genre}} </div>
+                    <div class="font-weight-medium"> {{game.platform}} </div>
                 </v-card-subtitle>
                 <v-card-title>
                     About
@@ -42,11 +42,12 @@
                     {{game.price}} kr.
                     <v-btn
                         color="teal accent-4"
-                        class="pa-6 white--text"
+                        class="white--text center-text"
                         @click="addToBasket(game)"
+                        id="btn"
                     >
                         Add
-                        <v-icon color="white" class="mx-1">shopping_basket</v-icon>
+                        <v-icon color="white" class="mx-auto my-auto">shopping_basket</v-icon>
                     </v-btn>
                 </v-card-text>
                 
@@ -99,5 +100,9 @@
             height: 85%;
             border: 0;
         }
+    }
+    #btn{
+        height: 50px !important;
+        width: 88px !important;
     }
 </style>
