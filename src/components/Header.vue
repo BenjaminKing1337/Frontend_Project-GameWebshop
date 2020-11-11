@@ -2,8 +2,16 @@
   <div>
     <header v-if="!$route.meta.hide" elevate-on-scroll>
       <div class="logo" id="center">
-          <v-icon v-if="userIsAuthenticated" class="ml-5 mt-2" color="green" x-large>account_circle</v-icon>
-          <v-icon v-else class="ml-5 mt-2" color="black" x-large>account_circle</v-icon>
+        <v-icon
+          v-if="userIsAuthenticated"
+          class="ml-5 mt-2"
+          color="green"
+          x-large
+          >account_circle</v-icon
+        >
+        <v-icon v-else class="ml-5 mt-2" color="black" x-large
+          >account_circle</v-icon
+        >
       </div>
 
       <div>
@@ -13,8 +21,15 @@
 
         <p class="dropdownOpen" v-show="drawer">
           <v-list>
-            <router-link tag="li" class="py-2" v-for="item in menuItems" :key="item.title" :to="item.link">
-              <v-icon class="icon" color="black">{{item.icon}}</v-icon>
+            <router-link
+              tag="li"
+              class="py-2"
+              v-for="item in menuItems"
+              :key="item.title"
+              :to="item.link"
+             
+            >
+              <v-icon class="icon" color="black">{{ item.icon }}</v-icon>
               <v-list-tile-content>{{ item.title }}</v-list-tile-content>
             </router-link>
             <div class="dpCloseBtn" tag="li" @click="drawer = !drawer">
@@ -38,30 +53,34 @@ export default {
   data: () => ({
     drawer: false,
   }),
-   computed: {
-      menuItems () {
-        let menuItems = [
-          {icon: 'home', title: 'Home', link: '/home'},
-          {icon: 'videogame_asset', title: 'Games', link: '/games'},
-          {icon: 'info', title: 'About', link: '/about'},
-          {icon: 'login', title: 'LogIn', link: '/login'},
-        ]
-        if (this.userIsAuthenticated) {
-          menuItems = [
-            {icon: 'home', title: 'Home', link: '/home'},
-            {icon: 'videogame_asset', title: 'Games', link: '/games'},
-            {icon: 'info', title: 'About', link: '/about'},
-            {icon: 'login', title: 'LogIn', link: '/login'},
-            {icon: 'lock', title: 'Admin', link: '/admin'},
-          ]
-        }
-        return menuItems
-      },
-      userIsAuthenticated () {
-        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+  computed: {
+    menuItems() {
+      let menuItems = [
+        { icon: "home", title: "Home", link: "/home" },
+        { icon: "videogame_asset", title: "Games", link: "/games" },
+        { icon: "info", title: "About", link: "/about" },
+        { icon: "login", title: "LogIn", link: "/login" },
+      ];
+      if (this.userIsAuthenticated) {
+        menuItems = [
+          { icon: "home", title: "Home", link: "/home" },
+          { icon: "videogame_asset", title: "Games", link: "/games" },
+          { icon: "info", title: "About", link: "/about" },
+          { icon: "login", title: "LogIn", link: "/login" },
+          { icon: "lock", title: "Admin", link: "/admin" },
+        ];
       }
-   }
-}
+      return menuItems;
+    },
+    userIsAuthenticated() {
+      return (
+        this.$store.getters.user !== null &&
+        this.$store.getters.user !== undefined
+      );
+    },
+  },
+
+};
 </script>
 
 <style lang="scss" scoped>
@@ -119,8 +138,7 @@ li:hover {
     color: map-get($Colorscheme, secondary) !important;
   }
 }
-a{
+a {
   text-decoration: none;
 }
-
 </style>
