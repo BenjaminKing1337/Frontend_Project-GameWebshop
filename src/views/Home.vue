@@ -42,7 +42,7 @@
     <div class="cards">
       <v-card
         v-for="slide in slideshow" :key="slide.id"
-        max-width="220"
+        max-width="288"
         class="ma-2 mb-5"
         id="card"
         @click="onClickSlide(slide.id)"
