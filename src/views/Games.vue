@@ -6,16 +6,7 @@
     </div>
     
     <div class="games">
-      <v-layout row wrap v-if="loading">
-            <v-flex xs12 class="text-center">
-                <v-progress-circular
-                indeterminate
-                color="red"
-                :width="7"
-                :size="70"
-                ></v-progress-circular>
-            </v-flex>
-      </v-layout>
+      <loader v-if="loading"></loader>
       <v-layout id="all_games" v-else class="mb-5">
         <v-card
           max-width="288"

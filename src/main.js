@@ -9,12 +9,14 @@ import vuetify from './plugins/vuetify'
 import Alert from './components/User/Alert.vue'
 import Edit from './components/Edit.vue'
 import Basket from './components/Basket.vue'
+import Loading from './components/Loading.vue'
 
 Vue.config.productionTip = false
 
 Vue.component('app-alert', Alert)
 Vue.component('product-edit', Edit)
 Vue.component('game-basket', Basket)
+Vue.component('loader', Loading)
 
 new Vue({
   router,
