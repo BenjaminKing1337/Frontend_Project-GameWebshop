@@ -107,6 +107,8 @@ export default {
     height: 3em;
     width: 80%;
     margin: 5% auto 2% auto;
+    border-radius: 10px;
+    padding-left: 10px;
   }
   .games{
     .wrap{

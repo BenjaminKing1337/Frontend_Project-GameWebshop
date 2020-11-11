@@ -1,15 +1,16 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <v-layout>
+      <v-card class="mx-auto my-10 pa-3">
+        This is an about page.
+      </v-card>
+    </v-layout>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'About',
-  components: {
-    
-  }
-}
+  name: "About",
+  components: {},
+};
 </script>

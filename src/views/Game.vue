@@ -1,15 +1,6 @@
 <template>
     <div>
-        <v-layout row wrap v-if="loading">
-            <v-flex xs12 class="text-center">
-                <v-progress-circular
-                indeterminate
-                color="red"
-                :width="7"
-                :size="70"
-                ></v-progress-circular>
-            </v-flex>
-        </v-layout>
+        <loader v-if="loading"></loader>
         <v-layout v-else>
             <v-card
                 class="mx-auto my-10 pa-1"  
