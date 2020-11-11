@@ -97,6 +97,11 @@ header {
 
 .logo {
   position: fixed;
+  z-index: 3;
+  #icon{
+    background-color: #00BFA5;
+    border-radius: 50px;
+  }
 }
 .btn {
   width: 200px;
@@ -122,6 +127,7 @@ header {
 }
 .basket {
   position: fixed;
+  z-index: 3;
   right: 0;
 }
 

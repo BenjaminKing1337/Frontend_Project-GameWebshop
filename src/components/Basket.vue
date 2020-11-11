@@ -3,13 +3,13 @@
         <template v-slot:activator="{ on, attrs }">
             <v-btn text fab accent v-bind="attrs" v-on="on" >
                 <v-badge
-                    color="green"
+                    color="grey darken-3"
                     overlap
                     left
                     bottom
                 >
                     <template v-slot:badge>
-                        <span> {{badge}} </span>
+                        <span id="badge_number"> {{badge}} </span>
                     </template>
                     <v-icon class="mr-5 mt-2" color="teal accent-4" x-large>shopping_basket</v-icon>
                 </v-badge>
@@ -124,5 +124,5 @@
 </script>
 
 <style lang="scss" scoped>
-
+    
 </style>

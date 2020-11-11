@@ -21,7 +21,7 @@
           show-arrows-on-hover
           style="cursor: pointer;"
           id="carousel"
-          class="rounded-xl"
+          class="rounded-lg"
         >
           <v-carousel-item
             v-for="slide in slideshow"
@@ -38,7 +38,7 @@
   </v-layout>
   </v-container>
   <div class="games" v-if="!loading">
-    <h1>Top Selling Games</h1>
+    <h1 class="teal--text text--accent-4">Top Selling Games</h1>
     <div class="cards">
       <v-card
         v-for="slide in slideshow" :key="slide.id"

@@ -16,6 +16,7 @@
             class="white--text align-end"
             height="200px"
             :src="game.imageUrl"
+            @click="onClickImage(game.id)"
           >
             <v-card-title style="background-color: #00000099;">{{game.title}}</v-card-title>
           </v-img>
@@ -90,6 +91,9 @@ export default {
       this.$store.commit('addBasketItems', this.basketDump);
       this.basketDump = [];
     },
+    onClickImage (id) {
+        this.$router.push('/games/' + id)
+    }
   }
 }
 </script>
