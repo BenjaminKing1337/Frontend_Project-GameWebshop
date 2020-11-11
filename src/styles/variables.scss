@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+$body-font-family: 'Source Sans Pro', sans-serif;
+
 $Colorscheme: (
     primary: black,
     secondary: red,
@@ -8,7 +11,7 @@ $Colorscheme: (
     septenary: #FFB936,
     octonary: #FF1212,
     nonary: #cacaca,
-    denary: #f34B34
+    denary: #ffffff
 );
 
   .custom-loader {
