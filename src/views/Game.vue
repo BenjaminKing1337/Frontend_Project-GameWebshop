@@ -1,54 +1,86 @@
 <template>
     <div>
-        <v-card
-            class="mx-auto my-10 pa-3"  
-            max-width="80%" 
-        >
-            <v-img
-            class="white--text align-end"
-            height="auto"
-            :src="game.imageUrl"
+        <v-layout row wrap v-if="loading">
+            <v-flex xs12 class="text-center">
+                <v-progress-circular
+                indeterminate
+                color="red"
+                :width="7"
+                :size="70"
+                ></v-progress-circular>
+            </v-flex>
+        </v-layout>
+        <v-layout v-else>
+            <v-card
+                class="mx-auto my-10 pa-3"  
+                max-width="80%" 
             >
-            <v-card-title style="background-color: #00000099;">{{game.title}}</v-card-title>
-            </v-img>
-            <v-card-subtitle class="pb-0">
-            <div> {{game.genre}} </div>
-            <div class="font-weight-medium"> {{game.platform}} </div>
-            </v-card-subtitle>
-            <v-card-title>
-                About
-            </v-card-title>
-            <v-card-text>
-                <p>{{game.description}}</p>
-            </v-card-text>
-            <v-card-title>
-                Video
-            </v-card-title>
-            <div class="resp-container">
-                <iframe class="resp-iframe" :src="game.videoUrl" allowfullscreen gesture="media"  allow="encrypted-media" ></iframe>
-            </div>
-            <v-card-text class="font-weight-black text-h4 text-center pt-10">
-                 {{game.price}} kr.
-                 <v-btn
-                color="orange"
-                class="pa-6"
-            >
-                Add
-                <v-icon color="black" class="icon">shopping_basket</v-icon>
-            </v-btn>
-            </v-card-text>
-            
-        </v-card>
+                <v-img
+                class="white--text align-end"
+                height="auto"
+                :src="game.imageUrl"
+                >
+                <v-card-title style="background-color: #00000099;">{{game.title}}</v-card-title>
+                </v-img>
+                <v-card-subtitle class="pb-0">
+                <div> {{game.genre}} </div>
+                <div class="font-weight-medium"> {{game.platform}} </div>
+                </v-card-subtitle>
+                <v-card-title>
+                    About
+                </v-card-title>
+                <v-card-text>
+                    <p>{{game.description}}</p>
+                </v-card-text>
+                <v-card-title>
+                    Video
+                </v-card-title>
+                <div class="resp-container">
+                    <iframe class="resp-iframe" :src="game.videoUrl" allowfullscreen gesture="media"  allow="encrypted-media" ></iframe>
+                </div>
+                <v-card-text class="font-weight-black text-h4 text-center pt-10 teal--text text--accent-4">
+                    {{game.price}} kr.
+                    <v-btn
+                        color="teal accent-4"
+                        class="pa-6 white--text"
+                        @click="addToBasket(game)"
+                    >
+                        Add
+                        <v-icon color="white" class="mx-1">shopping_basket</v-icon>
+                    </v-btn>
+                </v-card-text>
+                
+            </v-card>
+        </v-layout>
     </div>
 </template>
 
 <script>
     export default {
+        data(){
+            return{
+                basketDump: [],
+            }
+        },
         props: ['id'],
         computed:{
             game(){
                 return this.$store.getters.loadedGame(this.id)
-            }
+            },
+            loading () {
+                return this.$store.getters.loading
+            },
+        },
+        methods:{
+            addToBasket(game){
+            this.basketDump.push({
+                title: game.title,
+                price: game.price,
+                quantity: 1,
+                });
+            this.$store.commit('addBasketItems', this.basketDump);
+            this.basketDump = [];
+            },
         }
     }
 </script>

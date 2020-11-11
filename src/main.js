@@ -8,11 +8,13 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import Alert from './components/User/Alert.vue'
 import Edit from './components/Edit.vue'
+import Basket from './components/Basket.vue'
 
 Vue.config.productionTip = false
 
 Vue.component('app-alert', Alert)
 Vue.component('product-edit', Edit)
+Vue.component('game-basket', Basket)
 
 new Vue({
   router,

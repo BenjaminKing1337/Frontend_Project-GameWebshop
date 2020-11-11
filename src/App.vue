@@ -27,7 +27,7 @@ export default {
 @import "./src/styles/variables.scss";
 
 .body{
-  background: linear-gradient(map-get($Colorscheme, tertiary), map-get($Colorscheme, primary));
+  background: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
 }
 
 </style>

@@ -36,7 +36,7 @@
                                 </v-layout>
                                 <v-layout row>
                                     <v-flex xs12>
-                                        <v-btn type="submit" :disabled="loading" :loading="loading">
+                                        <v-btn color="teal accent-4" type="submit" :disabled="loading" :loading="loading">
                                             Log in
                                             <template v-slot:loader>
                                                 <span class="custom-loader">
@@ -45,7 +45,7 @@
                                             </template>
                                         </v-btn>
 
-                                        <v-btn @click="onLogout" :disabled="loading" :loading="loading">
+                                        <v-btn color="red" @click="onLogout" :disabled="loading" :loading="loading">
                                             Log Out
                                             <template v-slot:loader>
                                                 <span class="custom-loader">
@@ -86,7 +86,7 @@
         watch:{
             user(value){
                 if (value !== null && value !== undefined){
-                    this.$router.push('/home')
+                    this.$router.push('/admin')
                 }
             }
         },

@@ -1,12 +1,16 @@
 <template>
   <div>
-    <div class="searchbar"></div>
+  
+    <div class="search">
+      <input class="searchbar" type="text" v-model="search" placeholder="Search Games">
+    </div>
+    
     <div class="games">
       <v-layout row wrap v-if="loading">
-            <v-flex xs12 class="text-xs-center">
+            <v-flex xs12 class="text-center">
                 <v-progress-circular
                 indeterminate
-                class="primary--text"
+                color="red"
                 :width="7"
                 :size="70"
                 ></v-progress-circular>
@@ -15,7 +19,7 @@
       <v-layout id="all_games" v-else class="mb-5">
         <v-card
           max-width="288"
-          v-for="game in games" :key="game.id"
+          v-for="game in filteredGames" :key="game.id"
         >
           <v-img
             class="white--text align-end"
@@ -35,21 +39,21 @@
             <div class="wrap-actions">
               <v-card-actions class="actions">
                 <v-btn
-                  color="orange"
+                  color="teal accent-4"
                   text
-                  
+                  @click="addToBasket(game)"
                 >
                   Add
-                  <v-icon color="orange" class="icon">shopping_basket</v-icon>
+                  <v-icon color="teal accent-4" class="icon">shopping_basket</v-icon>
                 </v-btn>
 
                 <v-btn
-                  color="orange"
+                  color="teal accent-4"
                   text
                   :to="'/games/' + game.id"
                 >
                   See More
-                  <v-icon color="orange" class="icon">search</v-icon>
+                  <v-icon color="teal accent-4" class="icon">search</v-icon>
                 </v-btn>
               </v-card-actions>
             </div>
@@ -62,21 +66,47 @@
 
 <script>
 export default {
+  data(){
+    return{
+      search: '',
+      basketDump: [],
+    }
+  },
   name: 'Games',
   components: {},
   
   computed: {
+    filteredGames:function(){
+      return this.games.filter((game) =>{
+        return game.title.toLowerCase().match(this.search.toLowerCase())
+      })
+    },
     games(){
       return this.$store.getters.games
     },
     loading () {
       return this.$store.getters.loading
     },
+  },
+  methods:{
+    addToBasket(game){
+      this.basketDump.push({
+          title: game.title,
+          price: game.price,
+          quantity: 1,
+          messages: 1,
+        });
+      this.$store.commit('addBasketItems', this.basketDump);
+      this.basketDump = [];
+    },
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  .search{
+    text-align: center;
+  }
   .searchbar{
     background-color: azure;
     height: 3em;

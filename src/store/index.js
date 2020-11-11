@@ -10,6 +10,7 @@ const store = new Vuex.Store({
     user: null,
     loading: false,
     error: null,
+    basketItems:[],
   },
   mutations: {
     ADD_PRODUCT(state, payload){
@@ -59,12 +60,31 @@ const store = new Vuex.Store({
     },
     SET_LOADED_GAMES(state, payload){
       state.games = payload
-    }
+    },
+    addBasketItems: (state, basketItems) =>{
+      if(basketItems instanceof Array){
+          basketItems.forEach(game => {
+              if(state.basketItems.find(itemInArray => game.title === itemInArray.title)){
+                  game = state.basketItems.find(itemInArray => game.title === itemInArray.title);
+                  game.quantity++;
+                  game.messages++;
+              }
+              else{
+                  state.basketItems.push({
+                      title: game.title,
+                      price: game.price,
+                      quantity: 1,
+                      messages: 1,
+                  });
+              }
+          });
+      }
+  },
 
   },
   actions: {
     loadProducts({commit}) {
-      commit('setLoading', true)
+      commit('SET_LOADING', true)
       firebase.database().ref('games').once('value')
         .then((data) => {
           const games = []
@@ -83,12 +103,12 @@ const store = new Vuex.Store({
             })
           }
           commit('SET_LOADED_GAMES', games)
-          commit('setLoading', false)
+          commit('SET_LOADING', false)
         })
         .catch(
           (error) => {
             console.log(error)
-            commit('setLoading', false)
+            commit('SET_LOADING', false)
           }
         )
     },
@@ -226,16 +246,23 @@ const store = new Vuex.Store({
         })
       }
     },
+    slideShow (state) {
+      return state.games.slice(0, 6)
+    },
     user(state){
       return state.user
-    }
+    },
+    loading(state){
+      return state.loading
+    },
+    error(state){
+      return state.error
+    },
+    getBasketItems(state){
+      return state.basketItems
+    } 
   },
-  loading(state){
-    return state.loading
-  },
-  error(state){
-    return state.error
-  }
+  
   
 })
 
