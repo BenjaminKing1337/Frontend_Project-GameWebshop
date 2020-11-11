@@ -3,12 +3,14 @@
         <template v-slot:activator="{ on, attrs }">
             <v-btn text fab accent v-bind="attrs" v-on="on" >
                 <v-badge
-                    :content="messages"
                     color="green"
                     overlap
                     left
                     bottom
                 >
+                    <template v-slot:badge>
+                        <span> {{badge}} </span>
+                    </template>
                     <v-icon class="mr-5 mt-2" color="teal accent-4" x-large>shopping_basket</v-icon>
                 </v-badge>
             </v-btn>
@@ -91,6 +93,14 @@
                     total += individualGame.quantity * individualGame.price;
                 }
                 return total
+            },
+            badge(){
+                var messages = 0;
+                for(var games in this.basket){
+                    var individualGame = this.basket[games];
+                    messages += individualGame.messages;
+                }
+                return messages
             },
         },
 
