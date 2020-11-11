@@ -2,7 +2,7 @@
     <v-dialog width="350px" v-model="dialog" persistent>
         <template v-slot:activator="{ on, attrs }">
             <v-btn text fab accent v-bind="attrs" v-on="on">
-                <v-icon>edit</v-icon>
+                <v-icon color="teal accent-4">edit</v-icon>
             </v-btn>
         </template>
         <v-card>
@@ -72,9 +72,9 @@
                 <v-layout row wrap>
                     <v-flex xs12>
                         <v-card-actions>
-                            <v-btn text @click="dialog = false">Close</v-btn>
+                            <v-btn color="red" text @click="dialog = false">Close</v-btn>
                             <v-spacer></v-spacer>
-                            <v-btn class="green--text" text @click="onSaveChanges">Save</v-btn>
+                            <v-btn class="teal--text text--accent-4" text @click="onSaveChanges">Save</v-btn>
                         </v-card-actions>
                     </v-flex>
                 </v-layout>

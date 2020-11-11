@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-container style="background-color:white">
+        <v-flex xs10 sm6 offset-sm3 offset-xs1 style="background-color:white" class="rounded-lg py-4">
             <v-layout row>
                 <v-flex xs8 sm6 offset-sm3 offset-xs4>
                     <h4>Create a new Product</h4>
@@ -95,9 +95,10 @@
                         <v-layout row>
                             <v-flex xs8 sm6 offset-sm3 offset-xs4>
                                 <v-btn 
-                                    color="green" 
+                                    color="teal accent-4"
                                     :disabled="!formIsValid"
                                     type="submit"
+                                    class="white--text"
                                 >
                                     Add Product
                                 </v-btn>
@@ -106,12 +107,12 @@
                     </form>
                 </v-flex>
             </v-layout>
-        </v-container>
+        </v-flex>
         <v-layout row wrap v-if="loading">
-            <v-flex xs12 class="text-xs-center">
+            <v-flex xs12 class="text-center">
                 <v-progress-circular
                 indeterminate
-                class="primary--text"
+                color="red"
                 :width="7"
                 :size="70"
                 ></v-progress-circular>
@@ -119,9 +120,11 @@
         </v-layout>
         <v-layout v-else>
             <v-flex xs10 sm6 offset-sm3 offset-xs1>
-                <v-simple-table class="my-6">
+                <input type="text" class="white pa-2 mt-2 rounded-t-lg" v-model="search" placeholder="Search Products">
+                <v-divider></v-divider>
+                <v-simple-table class="mb-6 py-2 rounded-t-0 rounded-tr-lg rounded-b-lg" dense>
                     <tbody>
-                        <tr v-for="game in games" :key="game.index">
+                        <tr v-for="game in filteredGames" :key="game.id" class="tr">
                             <td>
                                 <span class="font-weight-bold">{{ game.title }}</span> <br>
                                 <span class="font-weight-light">{{ game.genre }}</span> <br>
@@ -169,12 +172,18 @@
                     this.description !== '' &&
                     this.price !== ''
             },
+            filteredGames:function(){
+                return this.games.filter((game) =>{
+                return game.title.toLowerCase().match(this.search.toLowerCase())
+                })
+            },
             games(){
                 return this.$store.getters.games
             },
             loading () {
                 return this.$store.getters.loading
             },
+            
         },
         methods:{
             onAddProduct(){

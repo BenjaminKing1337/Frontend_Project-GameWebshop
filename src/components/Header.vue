@@ -2,32 +2,37 @@
   <div>
     <header v-if="!$route.meta.hide" elevate-on-scroll>
       <div class="logo" id="center">
-          <v-icon v-if="userIsAuthenticated" class="ml-5 mt-2" color="green" x-large>account_circle</v-icon>
-          <v-icon v-else class="ml-5 mt-2" color="black" x-large>account_circle</v-icon>
+          <v-icon v-if="userIsAuthenticated" class="ml-5 mt-2" color="teal accent-2" x-large>account_circle</v-icon>
+          <v-icon v-else class="ml-5 mt-2" color="grey darken-3" x-large>account_circle</v-icon>
       </div>
-
-      <div>
-        <v-btn @click="drawer = !drawer" class="nav" color="black">
-          <v-icon class="icon" color="black">menu</v-icon>
-        </v-btn>
-
-        <p class="dropdownOpen" v-show="drawer">
-          <v-list>
-            <router-link tag="li" class="py-2" v-for="item in menuItems" :key="item.title" :to="item.link">
-              <v-icon class="icon" color="black">{{item.icon}}</v-icon>
-              <v-list-tile-content>{{ item.title }}</v-list-tile-content>
-            </router-link>
-            <div class="dpCloseBtn" tag="li" @click="drawer = !drawer">
-              <v-icon class="icon material-icons md-48" color="red"
-                >menu</v-icon
-              >
-            </div>
-          </v-list>
-        </p>
-      </div>
-
-      <div class="checkout" id="center">
-        <v-icon class="mr-5 mt-2" color="black" x-large>shopping_basket</v-icon>
+      <v-menu
+        transition="slide-y-transition"
+        bottom
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            class="btn"
+            color="teal accent-4"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon class="icon" color="black">menu</v-icon>
+          </v-btn>
+        </template>
+        <v-card id="list" color="teal accent-4">
+        <v-list>
+          <v-list-item
+            v-for="item in menuItems" :key="item.title" :to="item.link"
+            
+          >
+            <v-icon class="icon"  color="blue lighten-5">{{item.icon}}</v-icon>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+        </v-card>
+      </v-menu>
+      <div class="basket">
+        <game-basket></game-basket>
       </div>
     </header>
   </div>
@@ -67,50 +72,42 @@ export default {
 <style lang="scss" scoped>
 header {
   height: 60px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
-.nav {
-  height: 60px !important;
+.logo{
+  position: fixed;
+}
+.btn{
   width: 200px;
-  background: linear-gradient(
-    map-get($Colorscheme, secondary),
-    map-get($Colorscheme, primary)
-  );
+  height: 50px !important;
   border-radius: 0 0 70px 70px;
-  list-style: none;
-  text-align: center;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 3;
+}
+#list{
+  border-radius: 0 0 50px 50px;
 }
 .theme--light.v-list {
-  background: linear-gradient(
-    map-get($Colorscheme, secondary),
-    map-get($Colorscheme, primary)
-  );
   text-align: center;
-  list-style: none;
-  border-radius: 0 0 70px 70px;
-  margin-top: -60px;
   z-index: 2;
+  background-color: transparent;
+} 
+.v-menu__content{
+  border-radius: 0 0 50px 50px;
+  box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+  margin-top: -20px;
 }
-.dropdownOpen {
-  position: relative;
-  z-index: 999;
+.basket{
+  position: fixed;
+  right: 0;
 }
-.dpCloseBtn {
-  padding: 20px;
-  height: 50px;
-  border: none !important;
-  background: none !important;
-  border-radius: 0 0 70px 70px;
-  font-size: 5px;
-}
-.dpCloseBtn:hover {
-  background-color: map-get($Colorscheme, primary) !important;
-  .icon {
-    color: map-get($Colorscheme, secondary) !important;
-  }
-}
+
+
 
 li:hover {
   background-color: black;
