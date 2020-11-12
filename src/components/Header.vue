@@ -7,9 +7,10 @@
             class="ml-5 mt-2"
             color="teal accent-2"
             x-large
+            id="icon"
             >account_circle</v-icon
           >
-          <v-icon v-else class="ml-5 mt-2" color="grey darken-3" x-large
+          <v-icon v-else id="icon" class="ml-5 mt-2" color="grey darken-3" x-large
             >account_circle</v-icon
           >
         </div>
