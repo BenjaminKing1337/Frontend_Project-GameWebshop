@@ -3,10 +3,12 @@
     <v-layout>
       <v-flex>
         <v-card class="mx-auto my-10 pa-9" width="90%">
-          <h1>This is an about header.</h1>
+          <h1>Our Vision.</h1>
           <hr />
-          <p>This is an about text</p>
-
+          <br>
+          <p>This is an online videogame webshop, that handles a wide variety of popular titles, information, trailers and display of artwork for said titles.
+            Made by a couple of multimedia students from Business Academy Southwest. </p>
+            <p>It is supposed to be a simple and easy-to-navigate site that reflects our skills in making progressive web apps such as this webshop  </p>
           <v-row>
             <v-col id="symbols">
               <v-img src="@/assets/logo.png"> </v-img>
@@ -29,7 +31,9 @@
             <v-col id="usText">
               <h1>This is a Sam.</h1>
               <hr />
-              <p>This is about Sam</p>
+              <p>This is about Sam 
+               <br> He is the man
+               <br> who delivers</p>
             </v-col>
           </v-row>
         </v-card>
@@ -40,7 +44,6 @@
           color="transparent"
         >
           <v-row class="creators">
-            
             <v-col id="usText">
               <h1>This is a Benji.</h1>
               <hr />
@@ -75,13 +78,12 @@ export default {
 #sam {
   box-shadow: none;
   #usText {
-    background-color:map-get($Colorscheme, denary);
+    background-color: map-get($Colorscheme, denary);
     border-radius: 5px;
     margin: auto 0;
     padding: 30px;
   }
 }
-
 
 @media only screen and (max-width: 850px) {
   #creators {
