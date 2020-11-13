@@ -124,7 +124,7 @@ export default {
   color: map-get($Colorscheme, header) !important;
 }
 #iCol {
-  color: map-get($Colorscheme, icons) !important;
+  color: map-get($Colorscheme, textaccent) !important;
 }
 #tCol {
   color: map-get($Colorscheme, textaccent) !important;

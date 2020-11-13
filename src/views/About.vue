@@ -106,7 +106,16 @@
             <v-col id="usText">
               <h1 id="atCol">This is Benji.</h1>
               <hr />
-              <p>Hey Sam, can you write something funny about me? :D</p>
+              <p>Charming man of the north with a sharp tongue and a witty brain,
+                  Benji strives to set on course of pain and suffering to become 
+                  a Web Developer like no other. 
+              </p>
+              <p>
+                Through endless rage and constant effort he conquers one line of code after another
+                 to achieve his desired vision never seen before.
+                
+              </p>
+              <p>Uncle Benji</p>
             </v-col>
             <v-col>
               <v-img src="@/assets/ben.png"> </v-img>

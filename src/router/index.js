@@ -8,6 +8,7 @@ import About from '../views/About.vue'
 import Admin from '../views/Admin.vue'
 import SignUp from '../components/User/SignUp.vue'
 import Login from '../components/User/Login.vue'
+import AuthGuard from './auth-guard'
 
 
 
@@ -44,7 +45,8 @@ const routes = [
   {
     path: '/admin',
     name: 'Admin',
-    component: Admin
+    component: Admin,
+    beforeEnter: AuthGuard
   },
   {
     path: '/signup',
