@@ -102,8 +102,8 @@ $ang: 0.7071;
 $a: $d * $ang;
 
 .flowerpad {
-  width: $size * 12;
-  height: $size * 12;
+  width: $size * 2;
+  height: $size * 2;
   position: absolute;
   margin: auto;
   top: 0;
@@ -123,7 +123,7 @@ $a: $d * $ang;
   left: 0;
   right: 0;
   bottom: 0;
-  transform-origin: 50% 50%;
+  // transform-origin: 50% 50%;
 }
 
 .flowerpad .circ {
