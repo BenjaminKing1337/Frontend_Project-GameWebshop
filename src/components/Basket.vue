@@ -127,7 +127,7 @@ export default {
   color: map-get($Colorscheme, textaccent) !important;
 }
 #tCol {
-  color: map-get($Colorscheme, textaccent) !important;
+  color: map-get($Colorscheme, baskettext) !important;
 }
 #btCol {
   color: map-get($Colorscheme, baskettext) !important;
