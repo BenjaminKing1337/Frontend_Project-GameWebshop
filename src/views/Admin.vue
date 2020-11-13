@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-flex
-    id="createNew"
+      id="createNew"
       xs10
       sm6
       offset-sm3
@@ -126,7 +126,7 @@
         />
         <v-divider></v-divider>
         <v-simple-table
-        id="products"
+          id="products"
           class="mb-6 py-2 rounded-t-0 rounded-tr-lg rounded-b-lg"
           dense
         >
@@ -144,7 +144,7 @@
               </td>
               <td>
                 <v-btn text fab>
-                  <v-icon id="delIcon"  @click="remove_products(game)"
+                  <v-icon id="delIcon" @click="remove_products(game)"
                     >delete</v-icon
                   >
                 </v-btn>
@@ -227,14 +227,12 @@ export default {
   background-color: map-get($Colorscheme, cards);
 }
 #editIcon {
-    color: map-get($Colorscheme, yes);
-
+  color: map-get($Colorscheme, yes);
 }
 #delIcon {
   color: map-get($Colorscheme, no);
 }
 #products {
-   background-color: map-get($Colorscheme, cards);
-
+  background-color: map-get($Colorscheme, cards);
 }
 </style>

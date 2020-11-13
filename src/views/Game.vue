@@ -18,11 +18,11 @@
           <div>{{ game.genre }}</div>
           <div class="font-weight-medium">{{ game.platform }}</div>
         </v-card-subtitle>
-        <v-card-title> <h2> About</h2> </v-card-title>
+        <v-card-title> <h2>About</h2> </v-card-title>
         <v-card-text>
           <p>{{ game.description }}</p>
         </v-card-text>
-        <v-card-title> <h2> Video </h2> </v-card-title>
+        <v-card-title> <h2>Video</h2> </v-card-title>
         <div class="resp-container">
           <iframe
             id="border"

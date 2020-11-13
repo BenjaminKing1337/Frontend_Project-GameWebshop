@@ -1,15 +1,15 @@
 <template>
   <div class="about">
-    
-      <loader v-if="loading"></loader>
-    
+    <loader v-if="loading"></loader>
+
     <v-layout v-else>
       <v-flex>
-        <v-card class="mx-auto my-10 pa-9"  max-width="70%" >
+        <v-card class="mx-auto my-10 pa-9" max-width="70%">
           <h1 id="atCol">Our Vision.</h1>
           <hr />
-          <p>- For an online webshop</p> </v-card>
-          <v-card class="mx-auto my-10 pa-9" max-width="70%">
+          <p>- For an online webshop</p>
+        </v-card>
+        <v-card class="mx-auto my-10 pa-9" max-width="70%">
           <p>
             This is an online videogame webshop, that handles a wide variety of
             popular titles, information, trailers and display of artwork for
