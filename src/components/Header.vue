@@ -1,53 +1,44 @@
 <template>
   <div>
     <header v-if="!$route.meta.hide" elevate-on-scroll>
-        <div class="logo" id="center">
-          <v-icon
-            v-if="userIsAuthenticated"
-            class="ml-5 mt-2"
-            color="teal accent-2"
-            x-large
-            id="icon"
-            >account_circle</v-icon
-          >
-          <v-icon v-else id="icon" class="ml-5 mt-2" color="grey darken-3" x-large
-            >account_circle</v-icon
-          >
-        </div>
-      
+      <div class="logo" id="center">
+        <v-icon
+          v-if="userIsAuthenticated"
+          class="ml-5 mt-2"
+          color="teal accent-2"
+          x-large
+          id="icon"
+          >account_circle</v-icon
+        >
+        <v-icon v-else id="icon" class="ml-5 mt-2" color="grey darken-3" x-large
+          >account_circle</v-icon
+        >
+      </div>
+
       <v-menu transition="slide-y-transition" bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            id="listBtn"
-            class="btn"
-            color="teal accent-4"
-            v-bind="attrs"
-            v-on="on"
-          >
+          <v-btn id="listBtn" class="btn" v-bind="attrs" v-on="on">
             <v-icon class="icon" color="black">menu</v-icon>
           </v-btn>
         </template>
-        <v-card id="list" color="teal accent-4">
+        <v-card id="list">
           <v-list>
             <v-list-item
               v-for="item in menuItems"
               :key="item.title"
               :to="item.link"
             >
-              <v-icon class="icon" color="blue lighten-5">{{
-                item.icon
-              }}</v-icon>
+              <v-icon id="iColor" class="icon">{{ item.icon }}</v-icon>
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item>
-            <v-icon class="icon" color="blue lighten-5">menu</v-icon>
+            <v-icon id="iColor" class="icon">menu</v-icon>
           </v-list>
         </v-card>
       </v-menu>
-      
-        <div class="basket">
-          <game-basket></game-basket>
-        </div>
-      
+
+      <div class="basket">
+        <game-basket></game-basket>
+      </div>
     </header>
   </div>
 </template>
@@ -94,13 +85,11 @@ header {
   justify-content: space-between;
 }
 
-
-
 .logo {
   position: fixed;
   z-index: 3;
-  #icon{
-    background-color: #00BFA5;
+  #icon {
+    background-color: map-get($Colorscheme, header);
     border-radius: 50px;
   }
 }
@@ -137,9 +126,17 @@ header {
   cursor: pointer;
 }
 
+#listBtn,
+#list {
+  background-color: map-get($Colorscheme, header) !important;
+}
+#iColor {
+  color: map-get($Colorscheme, icons);
+}
+
 #listBtn:hover {
   .icon {
-    color: white !important;
+    color: map-get($Colorscheme, icons) !important;
   }
 }
 

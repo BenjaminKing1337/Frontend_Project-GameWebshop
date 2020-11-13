@@ -1,52 +1,106 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-$body-font-family: 'Source Sans Pro', sans-serif;
+// colorscheme in use "Colorscheme"
+// colorscheme placeholder "ColorschemeP"
 
+
+// Sam's Theme
+$ColorschemeP: (
+  maintext: black, // Text
+  baskettext:black, // Text
+  textaccent: #00BFA5, // Secondary
+  loader: teal, // Secondary
+  header:  #00BFA5, // Secondary
+  cardBtn: #00BFA5, // Secondary shade
+  icons: #E1F5FE, // Primary
+  cards: white, // Tertiary
+  searchbar: white, // Tertiary
+  yes: teal, // Accept
+  no: red, // Decline
+  bg1: #1e3c72, // Primary shade
+  bg2: #2a5298 // Primary shade
+);
+// B&W Theme
+$ColorschemeP: (
+  maintext: black, // Text
+  baskettext:black, // Text
+  textaccent: black, // Secondary
+  loader: Black, // Secondary
+  header:  white, // Secondary
+  cardBtn: black, // Secondary shade
+  icons: black, // Primary
+  cards: white, // Tertiary
+  searchbar: white, // Tertiary
+  yes: teal, // Accept
+  no: crimson, // Decline
+  bg1: white, // Primary shade
+  bg2: black // Primary shade
+);
+// Green/Pink Theme
+$ColorschemeP: (
+  maintext: black, // Text
+  baskettext:black, // Text
+  textaccent: #ffb0b0, // Secondary
+  loader: #ffb0b0, // Secondary
+  header:  #ffb0b0, // Secondary
+  cardBtn: #fe7171, // Secondary shade
+  icons: #fe7171, // Primary
+  cards: #335d2d, // Tertiary
+  searchbar: #335d2d, // Tertiary
+  yes: teal, // Accept
+  no: red, // Decline
+  bg1: #7ea04d, // Primary shade
+  bg2: #335d2d // Primary shade
+);
+// Benji's Theme
 $Colorscheme: (
-    primary: black,
-    secondary: red,
-    tertiary: blue,
-    quaternary: #FC6D2B,
-    quinary: #707070,
-    senary: #2BFC83,
-    septenary: #FFB936,
-    octonary: #FF1212,
-    nonary: #cacaca,
-    denary: #ffffff
+  maintext: black, // Text
+  baskettext:black, // Text
+  textaccent: #ff5722, // Secondary
+  loader: #ff5722, // Secondary
+  header:  #ff5722, // Secondary
+  cardBtn: #dd2c00, // Secondary shade
+  icons: #00bcd4, // Primary
+  cards: white, // Tertiary
+  searchbar: white, // Tertiary
+  yes: teal, // Accept
+  no: red, // Decline
+  bg1: #b2ebf2, // Primary shade
+  bg2: #00bcd4 // Primary shade
 );
 
-  .custom-loader {
-    animation: loader 1s infinite;
-    display: flex;
+
+.custom-loader {
+  animation: loader 1s infinite;
+  display: flex;
+}
+@-moz-keyframes loader {
+  from {
+    transform: rotate(0);
   }
-  @-moz-keyframes loader {
-    from {
-      transform: rotate(0);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
   }
-  @-webkit-keyframes loader {
-    from {
-      transform: rotate(0);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+}
+@-webkit-keyframes loader {
+  from {
+    transform: rotate(0);
   }
-  @-o-keyframes loader {
-    from {
-      transform: rotate(0);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
   }
-  @keyframes loader {
-    from {
-      transform: rotate(0);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+}
+@-o-keyframes loader {
+  from {
+    transform: rotate(0);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
