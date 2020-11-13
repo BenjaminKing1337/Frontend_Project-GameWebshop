@@ -2,7 +2,7 @@
   <v-dialog width="350px" v-model="dialog" persistent>
     <template v-slot:activator="{ on, attrs }">
       <v-btn text fab accent v-bind="attrs" v-on="on">
-        <v-icon color="teal accent-4">edit</v-icon>
+        <v-icon id="editBtn">edit</v-icon>
       </v-btn>
     </template>
     <v-card>
@@ -72,10 +72,10 @@
         <v-layout row wrap>
           <v-flex xs12>
             <v-card-actions>
-              <v-btn color="red" text @click="dialog = false">Close</v-btn>
+              <v-btn id="delBtn" text @click="dialog = false">Close</v-btn>
               <v-spacer></v-spacer>
               <v-btn
-                class="teal--text text--accent-4"
+                id="editBtn"
                 text
                 @click="onSaveChanges"
                 >Save</v-btn
@@ -133,4 +133,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#editBtn {
+    color: map-get($Colorscheme, yes);
+}
+#delBtn {
+        color: map-get($Colorscheme, no);
+
+}
 </style>
