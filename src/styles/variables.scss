@@ -3,7 +3,7 @@
 
 
 // Sam's Theme
-$Colorscheme: (
+$ColorschemeP: (
   maintext: black, // Text
   baskettext:black, // Text
   textaccent: #00BFA5, // Secondary
@@ -65,6 +65,22 @@ $ColorschemeP: (
   no: red, // Decline
   bg1: #b2ebf2, // Primary shade
   bg2: #00bcd4 // Primary shade
+);
+// McDonald's Theme
+$Colorscheme: (
+  maintext: black, // Text
+  baskettext:black, // Text
+  textaccent: red, // Secondary
+  loader: yellow, // Secondary
+  header:   yellow, // Secondary
+  cardBtn: red, // Secondary shade
+  icons: #fe7171, // Primary
+  cards:  rgb(255, 223, 41), // Tertiary
+  searchbar:  rgb(255, 223, 41), // Tertiary
+  yes: teal, // Accept
+  no: red, // Decline
+  bg1: red, // Primary shade
+  bg2: rgb(185, 4, 4) // Primary shade
 );
 
 
