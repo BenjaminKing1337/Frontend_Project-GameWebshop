@@ -4,6 +4,8 @@ Game Webshop (Progressive Web App Project)
 
 Hosted on Web
 
+Created by Benjamin King & Samuel Kuzma
+
 https://game-webshop-2020.web.app/home
 
 ## Project setup
