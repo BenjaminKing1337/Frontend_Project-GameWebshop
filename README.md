@@ -1,4 +1,10 @@
-# game-webshop
+# Game Webshop
+
+Game Webshop (Progressive Web App Project)
+
+Hosted on Web
+
+https://game-webshop-2020.web.app/home
 
 ## Project setup
 ```
